@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Mì Cay Chaebol | Mì Cay Tài Phiệt, Giá Sinh Viên</title>
-  <meta name="description" content="Mì Cay Chaebol — mì cay K-food, gà rán Hàn, tokbokki và combo nhóm tại Phú Hữu, TP.HCM. 5 cấp độ cay, giá sinh viên, chất lượng tài phiệt.">
+  <meta name="description" content="Mì Cay Chaebol: mì cay K-food, gà rán Hàn, tokbokki và combo nhóm tại Phú Hữu, TP.HCM. 5 cấp độ cay, giá sinh viên, chất lượng tài phiệt.">
   <meta name="theme-color" content="#0c0a09">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Mì Cay Chaebol — Mì Cay Tài Phiệt, Giá Sinh Viên">
+  <meta property="og:title" content="Mì Cay Chaebol: Mì Cay Tài Phiệt, Giá Sinh Viên">
   <meta property="og:description" content="K-food fast-casual tại Phú Hữu, TP.HCM. 5 cấp độ cay, combo nhóm, gà rán Hàn.">
   <meta property="og:image" content="assets/micay.png">
   <meta property="og:url" content="https://micaychaebol.com">
@@ -25,6 +25,8 @@
       --cr: #f5f0e8; --cr2: #c4b99a;
       --ln: rgba(245,240,232,.1); --ln2: rgba(245,240,232,.18);
       --sp: clamp(3.5rem,7vw,6rem); --gu: clamp(1.5rem,5vw,4rem); --mw: 1200px;
+      /* Shape scale (locked): pill = round badges; lg = cards/images; md = buttons/inputs; sm = inline labels */
+      --r-sm: 8px; --r-md: 12px; --r-lg: 18px; --r-pill: 999px;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -33,7 +35,7 @@
     a { color: inherit; text-decoration: none; }
 
     /* ── Buttons ── */
-    .btn { display: inline-flex; align-items: center; gap: .4rem; padding: .65rem 1.5rem; font-family: 'Be Vietnam Pro', sans-serif; font-weight: 700; font-size: .88rem; letter-spacing: .03em; border-radius: 8px; cursor: pointer; transition: all .2s; border: none; white-space: nowrap; }
+    .btn { display: inline-flex; align-items: center; gap: .4rem; padding: .65rem 1.5rem; font-family: 'Be Vietnam Pro', sans-serif; font-weight: 700; font-size: .88rem; letter-spacing: .03em; border-radius: var(--r-sm); cursor: pointer; transition: all .2s; border: none; white-space: nowrap; }
     .btn-red { background: var(--red); color: var(--cr); }
     .btn-red:hover { background: var(--red-d); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,41,26,.4); }
     .btn-ghost { background: transparent; color: var(--cr); border: 1.5px solid var(--ln2); }
@@ -43,11 +45,11 @@
     .hdr { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: .72rem var(--gu); background: rgba(12,10,9,.9); border-bottom: 1px solid var(--ln); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); transition: box-shadow .3s; }
     .hdr.sh { box-shadow: 0 4px 32px rgba(0,0,0,.5); }
     .brand { display: flex; align-items: center; gap: .75rem; flex-shrink: 0; }
-    .brand-logo { width: 42px; height: 42px; object-fit: contain; border-radius: 8px; background: rgba(245,240,232,.08); padding: 3px; }
+    .brand-logo { width: 42px; height: 42px; object-fit: contain; border-radius: var(--r-sm); background: rgba(245,240,232,.08); padding: 3px; }
     .brand-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.25rem; font-weight: 900; text-transform: uppercase; letter-spacing: .06em; line-height: .95; color: var(--cr); }
     .brand-sub { font-size: .58rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-top: 2px; }
     .nav { display: flex; align-items: center; gap: .05rem; }
-    .nav a { padding: .45rem .85rem; font-size: .85rem; font-weight: 500; color: var(--cr2); border-radius: 6px; transition: color .2s, background .2s; }
+    .nav a { padding: .45rem .85rem; font-size: .85rem; font-weight: 500; color: var(--cr2); border-radius: var(--r-sm); transition: color .2s, background .2s; }
     .nav a:hover { color: var(--cr); background: rgba(245,240,232,.07); }
 
     /* ── Hero ── */
@@ -70,9 +72,9 @@
     .hstat-l { font-size: .72rem; color: var(--cr2); margin-top: .1rem; font-weight: 500; }
     .hero-media { position: relative; z-index: 2; display: flex; justify-content: flex-end; padding-right: 3rem; }
     .food-frame { position: relative; max-width: 640px; width: 100%; }
-    .food-img { width: 100%; border-radius: 24px; box-shadow: 0 0 0 1px rgba(201,168,76,.28), 0 0 80px rgba(212,41,26,.28), 0 40px 80px rgba(0,0,0,.65); transform: rotate(-2.5deg); transition: transform .5s ease; }
+    .food-img { width: 100%; border-radius: var(--r-lg); box-shadow: 0 0 0 1px rgba(201,168,76,.28), 0 0 80px rgba(212,41,26,.28), 0 40px 80px rgba(0,0,0,.65); transform: rotate(-2.5deg); transition: transform .5s ease; }
     .food-img:hover { transform: rotate(0deg) scale(1.02); }
-    .hero-mascot-reel { position: absolute; bottom: -50px; right: 0; width: 210px; aspect-ratio: 1 / 1; background: #fff; border: 2px solid rgba(201,168,76,.65); border-radius: 24px; overflow: hidden; box-shadow: 0 14px 36px rgba(0,0,0,.42), 0 0 0 6px rgba(212,41,26,.1); filter: drop-shadow(0 8px 24px rgba(0,0,0,.5)); animation: float 3.5s ease-in-out infinite; pointer-events: none; perspective: 900px; transform-style: preserve-3d; }
+    .hero-mascot-reel { position: absolute; bottom: -50px; right: 0; width: 210px; aspect-ratio: 1 / 1; background: #fff; border: 2px solid rgba(201,168,76,.65); border-radius: var(--r-lg); overflow: hidden; box-shadow: 0 14px 36px rgba(0,0,0,.42), 0 0 0 6px rgba(212,41,26,.1); filter: drop-shadow(0 8px 24px rgba(0,0,0,.5)); animation: float 3.5s ease-in-out infinite; pointer-events: none; perspective: 900px; transform-style: preserve-3d; }
     .hero-mascot { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; backface-visibility: hidden; transform-origin: center; }
     .hero-mascot.fx-pop { animation: mascotPop 16s cubic-bezier(.22,1,.36,1) infinite; }
     .hero-mascot.fx-flip { animation: mascotFlip 16s cubic-bezier(.22,1,.36,1) infinite 4s; }
@@ -100,11 +102,11 @@
     .stitle .red { color: var(--red); }
     .stitle .gold { color: var(--gold); }
     .sdesc { font-size: .9rem; color: var(--cr2); max-width: 520px; margin-top: .65rem; line-height: 1.65; }
-    .tag { display: inline-block; padding: .22rem .72rem; background: var(--red-g); border: 1px solid rgba(212,41,26,.3); border-radius: 100px; font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--red); margin-bottom: .7rem; }
+    .tag { display: inline-block; padding: .22rem .72rem; background: var(--red-g); border: 1px solid rgba(212,41,26,.3); border-radius: var(--r-pill); font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--red); margin-bottom: .7rem; }
 
     /* ── Menu ── */
     .menu-sec { background: var(--ink); }
-    .mfeat { display: grid; grid-template-columns: 1.1fr 1fr; align-items: stretch; background: var(--ink3); border: 1px solid var(--ln); border-radius: 20px; overflow: hidden; margin-bottom: 2rem; }
+    .mfeat { display: grid; grid-template-columns: 1.1fr 1fr; align-items: stretch; background: var(--ink3); border: 1px solid var(--ln); border-radius: var(--r-lg); overflow: hidden; margin-bottom: 2rem; }
     .mfeat-img { width: 100%; height: 100%; min-height: 380px; object-fit: cover; }
     .mfeat-body { padding: 2.5rem; }
     .mfeat-title { font-family: 'Barlow Condensed', sans-serif; font-size: 2.2rem; font-weight: 900; text-transform: uppercase; line-height: 1; margin-bottom: .4rem; }
@@ -114,7 +116,7 @@
     .pdl dd { font-family: 'Barlow Condensed', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--gold); text-align: right; }
     /* Asymmetric menu grid — anchor card spans 2 rows, two smaller stacked beside */
     .mgrid { display: grid; grid-template-columns: 1.35fr 1fr; grid-template-rows: auto auto; gap: 1.5rem; }
-    .mc { background: var(--ink3); border: 1px solid var(--ln); border-radius: 16px; overflow: hidden; transition: transform .25s, box-shadow .25s, border-color .25s; cursor: pointer; display: flex; flex-direction: column; }
+    .mc { background: var(--ink3); border: 1px solid var(--ln); border-radius: var(--r-lg); overflow: hidden; transition: transform .25s, box-shadow .25s, border-color .25s; cursor: pointer; display: flex; flex-direction: column; }
     .mc.mc-lg { grid-row: span 2; }
     .mc.mc-sm { display: grid; grid-template-columns: 0.85fr 1fr; align-items: stretch; }
     .mc.mc-sm .mc-img, .mc.mc-sm .mc-ph { height: 100%; min-height: 180px; border-bottom: none; border-right: 1px solid var(--ln); }
@@ -133,10 +135,10 @@
     .combo-sec { background: var(--ink2); }
     .combo-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4.5rem; align-items: center; }
     .combo-img-wrap { position: relative; }
-    .combo-img { width: 100%; border-radius: 20px; box-shadow: 0 30px 70px rgba(0,0,0,.55); }
+    .combo-img { width: 100%; border-radius: var(--r-lg); box-shadow: 0 30px 70px rgba(0,0,0,.55); }
     .combo-badge { position: absolute; top: -16px; right: -16px; width: 86px; height: 86px; border-radius: 50%; background: var(--red); border: 2px solid var(--red-d); display: flex; align-items: center; justify-content: center; text-align: center; font-family: 'Barlow Condensed', sans-serif; font-size: .65rem; font-weight: 900; letter-spacing: .05em; text-transform: uppercase; color: var(--cr); box-shadow: 0 8px 30px rgba(212,41,26,.5); line-height: 1.3; }
     .clist { display: flex; flex-direction: column; gap: .9rem; }
-    .cc { display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: center; padding: 1.1rem 1.4rem; background: var(--ink3); border: 1.5px solid var(--ln); border-radius: 14px; cursor: pointer; transition: all .22s; }
+    .cc { display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: center; padding: 1.1rem 1.4rem; background: var(--ink3); border: 1.5px solid var(--ln); border-radius: var(--r-md); cursor: pointer; transition: all .22s; }
     .cc:hover { border-color: var(--red); transform: translateX(5px); box-shadow: -4px 0 0 var(--red), 0 12px 30px rgba(0,0,0,.3); }
     .cnum { width: 44px; height: 44px; border-radius: 50%; background: var(--red-g); border: 1.5px solid rgba(212,41,26,.3); display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-size: .65rem; font-weight: 900; color: var(--red); text-align: center; flex-shrink: 0; line-height: 1.3; }
     .cname { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 900; text-transform: uppercase; line-height: 1; margin-bottom: .2rem; }
@@ -147,10 +149,10 @@
     .spice-sec { background: var(--ink); }
     .spice-layout { display: block; }
     .slvs { display: flex; flex-direction: column; gap: .75rem; min-width: 0; }
-    .slv { display: grid; grid-template-columns: auto minmax(0,1fr); align-items: flex-start; gap: 1rem; padding: 1rem 1.2rem; background: var(--ink3); border: 1.5px solid var(--ln); border-radius: 14px; cursor: pointer; transition: all .24s ease; overflow: hidden; }
+    .slv { display: grid; grid-template-columns: auto minmax(0,1fr); align-items: flex-start; gap: 1rem; padding: 1rem 1.2rem; background: var(--ink3); border: 1.5px solid var(--ln); border-radius: var(--r-md); cursor: pointer; transition: all .24s ease; overflow: hidden; }
     .slv.on { grid-template-columns: auto minmax(0,1fr) minmax(190px,260px); align-items: center; padding: 1.25rem 1.35rem; border-color: var(--red); background: linear-gradient(135deg, rgba(212,41,26,.15), rgba(36,28,20,.98)); box-shadow: 0 0 0 3px rgba(212,41,26,.12), 0 22px 55px rgba(0,0,0,.34); }
     .slv:hover:not(.on) { border-color: var(--ln2); background: rgba(245,240,232,.04); transform: translateX(3px); }
-    .slv-badge { font-family: 'Barlow Condensed', sans-serif; font-size: .78rem; font-weight: 900; letter-spacing: .04em; padding: .28rem .55rem; border-radius: 6px; background: var(--ink2); color: var(--cr2); flex-shrink: 0; min-width: 50px; text-align: center; transition: all .2s; line-height: 1.4; }
+    .slv-badge { font-family: 'Barlow Condensed', sans-serif; font-size: .78rem; font-weight: 900; letter-spacing: .04em; padding: .28rem .55rem; border-radius: var(--r-sm); background: var(--ink2); color: var(--cr2); flex-shrink: 0; min-width: 50px; text-align: center; transition: all .2s; line-height: 1.4; }
     .slv.on .slv-badge { background: var(--red); color: #fff; box-shadow: 0 8px 24px rgba(212,41,26,.3); }
     .slv-body { flex: 1; min-width: 0; }
     .slv-name { font-weight: 700; font-size: .9rem; line-height: 1.2; }
@@ -161,7 +163,7 @@
     .slv-desc { font-size: .78rem; color: var(--cr2); display: none; margin-top: .55rem; line-height: 1.55; max-width: 460px; }
     .slv.on .slv-desc { display: block; }
     .slv-art { display: none; }
-    .slv.on .slv-art { display: block; grid-column: 3; grid-row: 1 / span 2; justify-self: end; width: min(260px, 100%); aspect-ratio: 1 / 1; background: #fff; border: 2px solid rgba(201,168,76,.55); border-radius: 22px; overflow: hidden; box-shadow: 0 18px 48px rgba(0,0,0,.42), 0 0 0 7px rgba(212,41,26,.08); }
+    .slv.on .slv-art { display: block; grid-column: 3; grid-row: 1 / span 2; justify-self: end; width: min(260px, 100%); aspect-ratio: 1 / 1; background: #fff; border: 2px solid rgba(201,168,76,.55); border-radius: var(--r-lg); overflow: hidden; box-shadow: 0 18px 48px rgba(0,0,0,.42), 0 0 0 7px rgba(212,41,26,.08); }
     .slv-art img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.02); display: block; }
 
     /* ── Mascot band ── */
@@ -177,18 +179,19 @@
     .loc-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4.5rem; align-items: start; }
     .loc-list { display: flex; flex-direction: column; gap: 1.4rem; margin-bottom: 2rem; }
     .loc-item { display: flex; gap: 1rem; align-items: flex-start; }
-    .loc-icon { width: 40px; height: 40px; background: var(--red-g); border: 1px solid rgba(212,41,26,.25); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; }
+    .loc-icon { width: 40px; height: 40px; background: var(--red-g); border: 1px solid rgba(212,41,26,.25); border-radius: var(--r-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--red); }
+    .loc-icon svg { width: 20px; height: 20px; stroke-width: 1.5; }
     .loc-lbl { font-size: .65rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); margin-bottom: .15rem; }
     .loc-val { font-size: .9rem; color: var(--cr); line-height: 1.5; }
     .loc-btns { display: flex; gap: .75rem; flex-wrap: wrap; }
-    .map-wrap { position: relative; height: 410px; border-radius: 16px; border: 1px solid var(--ln); overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,.4); }
+    .map-wrap { position: relative; height: 410px; border-radius: var(--r-lg); border: 1px solid var(--ln); overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,.4); }
     .map-wrap iframe { width: 100%; height: 100%; border: 0; filter: grayscale(.35) contrast(1.05); }
-    .map-wrap::after { content: ''; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 0 1px rgba(201,168,76,.18), inset 0 -60px 80px -40px rgba(12,10,9,.45); border-radius: 16px; }
+    .map-wrap::after { content: ''; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 0 1px rgba(201,168,76,.18), inset 0 -60px 80px -40px rgba(12,10,9,.45); border-radius: var(--r-lg); }
 
     /* ── Footer ── */
     .footer { background: var(--ink); border-top: 1px solid var(--ln); padding: 3.5rem var(--gu) 2rem; }
     .ft-inner { max-width: var(--mw); margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 3rem; padding-bottom: 2rem; border-bottom: 1px solid var(--ln); }
-    .ft-logo { width: 48px; margin-bottom: .8rem; object-fit: contain; border-radius: 8px; background: rgba(245,240,232,.06); padding: 4px; }
+    .ft-logo { width: 48px; margin-bottom: .8rem; object-fit: contain; border-radius: var(--r-sm); background: rgba(245,240,232,.06); padding: 4px; }
     .ft-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 900; text-transform: uppercase; letter-spacing: .06em; line-height: 1; margin-bottom: .2rem; }
     .hero-wordmark { height: clamp(11rem, 21vw, 16rem); width: auto; max-width: 100%; display: block; margin-top: .1em; }
     .ft-tag { font-size: .68rem; color: var(--gold); letter-spacing: .12em; text-transform: uppercase; }
@@ -203,7 +206,7 @@
     .ft-sep { color: rgba(245,240,232,.3); }
 
     /* ── Tweaks ── */
-    .tweaks-panel { position: fixed; bottom: 2rem; left: 2rem; width: 270px; background: rgba(16,11,9,.97); border: 1px solid var(--ln2); border-radius: 16px; padding: 1.25rem; z-index: 200; display: none; backdrop-filter: blur(24px); box-shadow: 0 20px 60px rgba(0,0,0,.65); }
+    .tweaks-panel { position: fixed; bottom: 2rem; left: 2rem; width: 270px; background: rgba(16,11,9,.97); border: 1px solid var(--ln2); border-radius: var(--r-lg); padding: 1.25rem; z-index: 200; display: none; backdrop-filter: blur(24px); box-shadow: 0 20px 60px rgba(0,0,0,.65); }
     .tweaks-panel.on { display: block; }
     .tw-hdr { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
     .tw-title { font-family: 'Barlow Condensed', sans-serif; font-size: .95rem; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
@@ -213,7 +216,7 @@
     .tw-grp:last-child { margin-bottom: 0; }
     .tw-lbl { display: block; font-size: .62rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--cr2); margin-bottom: .45rem; }
     .tw-row { display: flex; gap: .35rem; flex-wrap: wrap; }
-    .tw-opt { padding: .28rem .65rem; border: 1px solid var(--ln); border-radius: 6px; background: var(--ink3); color: var(--cr2); font-size: .75rem; cursor: pointer; transition: all .15s; font-family: 'Be Vietnam Pro', sans-serif; font-weight: 500; }
+    .tw-opt { padding: .28rem .65rem; border: 1px solid var(--ln); border-radius: var(--r-sm); background: var(--ink3); color: var(--cr2); font-size: .75rem; cursor: pointer; transition: all .15s; font-family: 'Be Vietnam Pro', sans-serif; font-weight: 500; }
     .tw-opt.on, .tw-opt:hover { border-color: var(--red); color: var(--cr); background: rgba(212,41,26,.15); }
     .tw-sep { height: 1px; background: var(--ln); margin: .9rem 0; }
 
@@ -224,7 +227,7 @@
     a:focus-visible, button:focus-visible, .btn:focus-visible, .slv:focus-visible, .cc:focus-visible, .mc:focus-visible, .tw-opt:focus-visible {
       outline: 2px solid var(--gold);
       outline-offset: 3px;
-      border-radius: 8px;
+      border-radius: var(--r-sm);
     }
     .skip { position: absolute; left: -9999px; top: 0; z-index: 999; padding: .7rem 1.1rem; background: var(--gold); color: var(--ink); font-weight: 800; border-radius: 0 0 8px 0; }
     .skip:focus { left: 0; }
@@ -291,7 +294,7 @@
       h1.htitle { font-size: 3.55rem; }
       .hero-stats { gap: 1rem; justify-content: space-between; }
       .hstat-n { font-size: 1.8rem; }
-      .food-img { border-radius: 16px; }
+      .food-img { border-radius: var(--r-lg); }
       .hero-mascot-reel { width: 125px; right: -10px; bottom: -28px; }
       .mq-item { font-size: .86rem; }
       .stitle { font-size: 2.15rem; }
@@ -304,7 +307,7 @@
       .cprice { grid-column: 2; }
       .slv { gap: .65rem; padding: .85rem .75rem; }
       .slv.on { grid-template-columns: auto minmax(0,1fr); padding: 1rem; }
-      .slv.on .slv-art { grid-column: 1 / -1; grid-row: auto; justify-self: center; width: min(240px, 100%); border-radius: 18px; box-shadow: 0 14px 34px rgba(0,0,0,.42), 0 0 0 5px rgba(212,41,26,.08); }
+      .slv.on .slv-art { grid-column: 1 / -1; grid-row: auto; justify-self: center; width: min(240px, 100%); border-radius: var(--r-lg); box-shadow: 0 14px 34px rgba(0,0,0,.42), 0 0 0 5px rgba(212,41,26,.08); }
       .slv-badge { min-width: 44px; font-size: .72rem; padding: .24rem .45rem; }
       .slv-name { font-size: .82rem; }
       .slv.on .slv-name { font-size: 1.45rem; }
@@ -352,24 +355,10 @@
       <span class="dish-line">MÌ CAY</span>
       <img class="hero-wordmark" src="assets/chaebol-wordmark.png" alt="Chaebol">
     </h1>
-    <p class="hero-sub">Mì cay K-food, gà rán kiểu Hàn, tokbokki và combo nhóm — cho những bữa ăn có drama vừa đủ.</p>
+    <p class="hero-sub">Mì cay K-food, gà rán kiểu Hàn, tokbokki, combo nhóm. Bữa ăn có drama vừa đủ.</p>
     <div class="hero-btns">
       <a href="#menu" class="btn btn-red">Xem Menu →</a>
       <a href="#spice" class="btn btn-ghost">Chọn Cấp Cay</a>
-    </div>
-    <div class="hero-stats">
-      <div>
-        <div class="hstat-n">5<span class="a">+</span></div>
-        <div class="hstat-l">Cấp độ cay</div>
-      </div>
-      <div>
-        <div class="hstat-n">15<span class="a">+</span></div>
-        <div class="hstat-l">Món trong menu</div>
-      </div>
-      <div>
-        <div class="hstat-n">3<span class="a">×</span></div>
-        <div class="hstat-l">Combo tiết kiệm</div>
-      </div>
     </div>
   </div>
   <div class="hero-media">
@@ -417,7 +406,7 @@
       <img class="mfeat-img" src="assets/micay.png" alt="Mì cay đặc biệt nồi đất">
       <div class="mfeat-body">
         <div class="tag">Món Chủ Lực</div>
-        <h3 class="mfeat-title">Mì Cay<br>Lv.0 – Lv.4</h3>
+        <h3 class="mfeat-title">Mì Cay<br>Lv.0 - Lv.4</h3>
         <p class="mfeat-desc">Nước dùng cay đậm đà, topping rõ ràng, phục vụ nóng trong nồi đất đặc trưng. Chọn cấp cay bắt buộc khi order.</p>
         <dl class="pdl">
           <dt>Xúc xích chả cá</dt><dd>49k</dd>
@@ -438,7 +427,7 @@
           <div class="tag">Drama Gà Rán</div>
           <h3 class="mc-title">Gà Rán Kiểu Hàn</h3>
           <p class="mc-desc">Gà popcorn &amp; cánh gà sốt cay ngọt, áo giòn, double-fry. Gọi thêm hoặc lên combo nhóm.</p>
-          <div class="mc-price">39k – 69k</div>
+          <div class="mc-price">39k - 69k</div>
         </div>
       </article>
       <article class="mc mc-sm reveal" data-delay="1" tabindex="0">
@@ -450,7 +439,7 @@
           <div class="tag">Side Plot</div>
           <h3 class="mc-title">Ăn Vặt Hàn</h3>
           <p class="mc-desc">Tokbokki, chả cá Hàn, khoai tây phô mai. Chia nhau ăn kèm sau tô mì chính.</p>
-          <div class="mc-price">35k – 45k</div>
+          <div class="mc-price">35k - 45k</div>
         </div>
       </article>
       <article class="mc mc-sm reveal" data-delay="2" tabindex="0">
@@ -462,7 +451,7 @@
           <div class="tag">Nước Giải Cứu</div>
           <h3 class="mc-title">Đồ Uống</h3>
           <p class="mc-desc">Trà tắc, trà đào, nước ngọt. Cân vị cay, refresh sau mỗi tập drama.</p>
-          <div class="mc-price">10k – 18k</div>
+          <div class="mc-price">10k - 18k</div>
         </div>
       </article>
     </div>
@@ -479,7 +468,6 @@
       </div>
       <div>
         <div class="sh" style="margin-bottom:2rem">
-          <div class="eyebrow">Combo Nhóm</div>
           <h2 class="stitle">Đi Một Mình Hay<br><span class="red">Cả Gia Tộc</span><br>Đều Có Phần</h2>
           <p class="sdesc">Khách vẫn chọn cấp cay riêng cho từng tô. Combo tiết kiệm hơn gọi lẻ.</p>
         </div>
@@ -593,9 +581,8 @@
 <section class="sec mascot-band">
   <div class="inner">
     <div class="mascot-layout">
-      <img class="mascot-img-big" src="assets/mascot-full-body.png" alt="Cậu Chủ Cay — Young Spicy Master">
+      <img class="mascot-img-big" src="assets/mascot-full-body.png" alt="Cậu Chủ Cay, Young Spicy Master">
       <div>
-        <div class="eyebrow">Cậu Chủ Cay Nói</div>
         <h2 class="mascot-q">Cháy Vừa Thôi.<br><em>Còn Phải Comeback.</em></h2>
         <p class="mascot-txt">Cậu Chủ Cay là đại sứ thương hiệu của Mì Cay Chaebol: rich-kid K-drama gặp quán mì cay local. Tự tin, thân thiện, hơi K-drama nhưng vẫn dễ gần và local. Xuất hiện trên social, bao bì, menu board và các câu nhắc vui trong quán.</p>
       </div>
@@ -608,32 +595,39 @@
   <div class="inner">
     <div class="loc-layout">
       <div>
-        <div class="eyebrow">Địa Chỉ &amp; Liên Hệ</div>
         <h2 class="stitle" style="margin-bottom:2rem">Gia Tộc Chaebol<br><span class="red">Sắp Có Mặt</span><br>Tại Phú Hữu</h2>
         <div class="loc-list">
           <div class="loc-item">
-            <div class="loc-icon">📍</div>
+            <div class="loc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
             <div>
               <div class="loc-lbl">Địa chỉ</div>
               <div class="loc-val">Khu Khang An, đối diện chung cư Sky 9<br>Phú Hữu, TP.HCM</div>
             </div>
           </div>
           <div class="loc-item">
-            <div class="loc-icon">🕐</div>
+            <div class="loc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </div>
             <div>
               <div class="loc-lbl">Giờ mở cửa (dự kiến)</div>
-              <div class="loc-val">11:00 – 22:00 hằng ngày</div>
+              <div class="loc-val">11:00 - 22:00 hằng ngày</div>
             </div>
           </div>
           <div class="loc-item">
-            <div class="loc-icon">📱</div>
+            <div class="loc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
+            </div>
             <div>
               <div class="loc-lbl">Social media</div>
               <div class="loc-val">@micaychaebol</div>
             </div>
           </div>
           <div class="loc-item">
-            <div class="loc-icon">🌐</div>
+            <div class="loc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+            </div>
             <div>
               <div class="loc-lbl">Website</div>
               <div class="loc-val">micaychaebol.com</div>
@@ -641,7 +635,10 @@
           </div>
         </div>
         <div class="loc-btns">
-          <a href="https://www.google.com/maps/search/?api=1&query=Sky+9+Khang+An+Phu+Huu+TPHCM" target="_blank" rel="noreferrer" class="btn btn-red">📍 Chỉ Đường</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Sky+9+Khang+An+Phu+Huu+TPHCM" target="_blank" rel="noreferrer" class="btn btn-red">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            Chỉ Đường
+          </a>
         </div>
       </div>
       <div class="map-wrap">
@@ -649,7 +646,7 @@
           src="https://www.google.com/maps?q=Sky+9+Khang+An+Phu+Huu+TPHCM&output=embed"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
-          title="Bản đồ Mì Cay Chaebol — Khu Khang An, Phú Hữu, TP.HCM"
+          title="Bản đồ Mì Cay Chaebol tại Khu Khang An, Phú Hữu, TP.HCM"
           allowfullscreen></iframe>
       </div>
     </div>
@@ -669,7 +666,7 @@
     <div class="ft-col">
       <h4>Menu</h4>
       <div class="ft-links">
-        <a href="#menu">Mì Cay Lv.0 – Lv.4</a>
+        <a href="#menu">Mì Cay Lv.0 - Lv.4</a>
         <a href="#menu">Gà Rán Hàn</a>
         <a href="#menu">Ăn Vặt</a>
         <a href="#menu">Đồ Uống</a>
@@ -740,9 +737,13 @@
   // Year
   document.getElementById('yr').textContent = new Date().getFullYear();
 
-  // Header scroll shadow
+  // Header scroll shadow — sentinel + IntersectionObserver (no scroll listener)
   const hdrEl = document.querySelector('.hdr');
-  window.addEventListener('scroll', () => hdrEl.classList.toggle('sh', window.scrollY > 40), {passive:true});
+  const sentinel = document.createElement('div');
+  sentinel.setAttribute('aria-hidden', 'true');
+  sentinel.style.cssText = 'position:absolute;top:40px;left:0;width:1px;height:1px;pointer-events:none;';
+  document.body.prepend(sentinel);
+  new IntersectionObserver(([e]) => hdrEl.classList.toggle('sh', !e.isIntersecting), { threshold: 0 }).observe(sentinel);
 
   // Spice level selector — only one card expands at a time; mascot lives inside the active card.
   ['assets/spice-lv0-calm.jpg', 'assets/spice-lv1-blush.jpg', 'assets/spice-lv2-sweat.jpg', 'assets/spice-lv3-tears.jpg', 'assets/spice-lv4-fire.jpg']
