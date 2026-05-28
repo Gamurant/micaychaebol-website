@@ -4,6 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Mì Cay Chaebol | Mì Cay Tài Phiệt, Giá Sinh Viên</title>
+  <meta name="description" content="Mì Cay Chaebol — mì cay K-food, gà rán Hàn, tokbokki và combo nhóm tại Phú Hữu, TP.HCM. 5 cấp độ cay, giá sinh viên, chất lượng tài phiệt.">
+  <meta name="theme-color" content="#0c0a09">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mì Cay Chaebol — Mì Cay Tài Phiệt, Giá Sinh Viên">
+  <meta property="og:description" content="K-food fast-casual tại Phú Hữu, TP.HCM. 5 cấp độ cay, combo nhóm, gà rán Hàn.">
+  <meta property="og:image" content="assets/micay.png">
+  <meta property="og:url" content="https://micaychaebol.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="assets/logo-black.png">
+  <link rel="apple-touch-icon" href="assets/logo-black.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
@@ -102,11 +112,17 @@
     .pdl { display: grid; grid-template-columns: 1fr auto; gap: .4rem 1rem; border-top: 1px solid var(--ln); padding-top: 1.2rem; margin-bottom: 1.5rem; }
     .pdl dt { font-size: .85rem; color: var(--cr2); }
     .pdl dd { font-family: 'Barlow Condensed', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--gold); text-align: right; }
-    .mgrid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
-    .mc { background: var(--ink3); border: 1px solid var(--ln); border-radius: 16px; overflow: hidden; transition: transform .25s, box-shadow .25s, border-color .25s; cursor: pointer; }
-    .mc:hover { transform: translateY(-6px); box-shadow: 0 24px 50px rgba(0,0,0,.4); border-color: var(--ln2); }
-    .mc-img { height: 200px; object-fit: cover; width: 100%; }
-    .mc-ph { height: 200px; background: repeating-linear-gradient(45deg, var(--ink2) 0 6px, var(--ink3) 6px 12px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .5rem; border-bottom: 1px solid var(--ln); }
+    /* Asymmetric menu grid — anchor card spans 2 rows, two smaller stacked beside */
+    .mgrid { display: grid; grid-template-columns: 1.35fr 1fr; grid-template-rows: auto auto; gap: 1.5rem; }
+    .mc { background: var(--ink3); border: 1px solid var(--ln); border-radius: 16px; overflow: hidden; transition: transform .25s, box-shadow .25s, border-color .25s; cursor: pointer; display: flex; flex-direction: column; }
+    .mc.mc-lg { grid-row: span 2; }
+    .mc.mc-sm { display: grid; grid-template-columns: 0.85fr 1fr; align-items: stretch; }
+    .mc.mc-sm .mc-img, .mc.mc-sm .mc-ph { height: 100%; min-height: 180px; border-bottom: none; border-right: 1px solid var(--ln); }
+    .mc.mc-sm .mc-body { padding: 1.1rem 1.25rem; }
+    .mc:hover { transform: translateY(-6px); box-shadow: 0 24px 50px rgba(0,0,0,.4); border-color: var(--red); }
+    .mc-img { height: 260px; object-fit: cover; width: 100%; }
+    .mc.mc-lg .mc-img { height: 320px; }
+    .mc-ph { height: 260px; background: repeating-linear-gradient(45deg, var(--ink2) 0 6px, var(--ink3) 6px 12px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .5rem; border-bottom: 1px solid var(--ln); }
     .mc-ph-t { font-family: monospace; font-size: .68rem; color: var(--cr2); text-align: center; padding: .5rem; line-height: 1.5; }
     .mc-body { padding: 1.25rem; }
     .mc-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 900; text-transform: uppercase; margin-bottom: .25rem; }
@@ -165,7 +181,9 @@
     .loc-lbl { font-size: .65rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); margin-bottom: .15rem; }
     .loc-val { font-size: .9rem; color: var(--cr); line-height: 1.5; }
     .loc-btns { display: flex; gap: .75rem; flex-wrap: wrap; }
-    .map-ph { height: 310px; background: repeating-linear-gradient(135deg, var(--ink2) 0 8px, var(--ink) 8px 16px); border-radius: 16px; border: 1px solid var(--ln); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .6rem; color: var(--cr2); font-family: monospace; font-size: .68rem; text-align: center; line-height: 1.6; }
+    .map-wrap { position: relative; height: 410px; border-radius: 16px; border: 1px solid var(--ln); overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,.4); }
+    .map-wrap iframe { width: 100%; height: 100%; border: 0; filter: grayscale(.35) contrast(1.05); }
+    .map-wrap::after { content: ''; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 0 1px rgba(201,168,76,.18), inset 0 -60px 80px -40px rgba(12,10,9,.45); border-radius: 16px; }
 
     /* ── Footer ── */
     .footer { background: var(--ink); border-top: 1px solid var(--ln); padding: 3.5rem var(--gu) 2rem; }
@@ -179,6 +197,10 @@
     .ft-links a { font-size: .85rem; color: var(--cr2); transition: color .2s; }
     .ft-links a:hover { color: var(--cr); }
     .ft-bot { max-width: var(--mw); margin: 1.5rem auto 0; display: flex; justify-content: space-between; align-items: center; font-size: .72rem; color: var(--cr2); }
+    .ft-legal { display: inline-flex; align-items: center; gap: .55rem; flex-wrap: wrap; }
+    .ft-legal a { color: var(--cr2); transition: color .2s; }
+    .ft-legal a:hover { color: var(--cr); }
+    .ft-sep { color: rgba(245,240,232,.3); }
 
     /* ── Tweaks ── */
     .tweaks-panel { position: fixed; bottom: 2rem; left: 2rem; width: 270px; background: rgba(16,11,9,.97); border: 1px solid var(--ln2); border-radius: 16px; padding: 1.25rem; z-index: 200; display: none; backdrop-filter: blur(24px); box-shadow: 0 20px 60px rgba(0,0,0,.65); }
@@ -195,7 +217,42 @@
     .tw-opt.on, .tw-opt:hover { border-color: var(--red); color: var(--cr); background: rgba(212,41,26,.15); }
     .tw-sep { height: 1px; background: var(--ln); margin: .9rem 0; }
 
-    * { letter-spacing: 0 !important; }
+    /* Restore intentional letter-spacing where set; default neutral elsewhere */
+    h1, h2, h3, .stitle, .mfeat-title, .mc-title, .cname, .slv-name, .brand-name { letter-spacing: 0; }
+
+    /* Accessibility — focus rings, skip link, reduced motion */
+    a:focus-visible, button:focus-visible, .btn:focus-visible, .slv:focus-visible, .cc:focus-visible, .mc:focus-visible, .tw-opt:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+      border-radius: 8px;
+    }
+    .skip { position: absolute; left: -9999px; top: 0; z-index: 999; padding: .7rem 1.1rem; background: var(--gold); color: var(--ink); font-weight: 800; border-radius: 0 0 8px 0; }
+    .skip:focus { left: 0; }
+
+    /* Active/press feedback for all interactive elements */
+    .btn:active, .tw-opt:active, .nav a:active { transform: translateY(1px) scale(.98); }
+    .mc:active, .cc:active, .slv:active { transform: scale(.995); }
+
+    /* Active nav indicator */
+    .nav a.is-active { color: var(--cr); background: rgba(212,41,26,.18); }
+    .nav a.is-active::after { content: ''; display: block; height: 2px; background: var(--red); margin-top: 3px; border-radius: 2px; }
+
+    /* Headline word-balance — kills orphans */
+    h1, h2, h3, .stitle, .mfeat-title, .mascot-q { text-wrap: balance; }
+    .sdesc, .hero-sub, .mascot-txt, .mfeat-desc, .mc-desc, .slv-desc { text-wrap: pretty; }
+
+    /* Scroll-reveal entry */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s cubic-bezier(.22,1,.36,1), transform .9s cubic-bezier(.22,1,.36,1); }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .reveal[data-delay="1"] { transition-delay: .08s; }
+    .reveal[data-delay="2"] { transition-delay: .16s; }
+    .reveal[data-delay="3"] { transition-delay: .24s; }
+    .reveal[data-delay="4"] { transition-delay: .32s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
 
     @media (max-width: 1040px) {
       .hdr { align-items: flex-start; flex-wrap: wrap; }
@@ -210,7 +267,9 @@
       .hero-media { justify-content: flex-start; }
       .food-frame { max-width: 560px; }
       .hero-mascot-reel { right: -24px; bottom: -36px; width: 170px; }
-      .mgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .mgrid { grid-template-columns: 1fr; grid-template-rows: auto; }
+      .mc.mc-lg { grid-row: auto; }
+      .mc.mc-sm { grid-template-columns: 0.85fr 1fr; }
       .combo-layout { gap: 2.6rem; }
       .slv.on { grid-template-columns: auto minmax(0,1fr) minmax(170px,220px); }
       .slv.on .slv-art { width: min(220px, 100%); }
@@ -239,6 +298,8 @@
       .mfeat-body { padding: 1.25rem; }
       .mfeat-img { min-height: 260px; }
       .mgrid { grid-template-columns: 1fr; }
+      .mc.mc-sm { grid-template-columns: 1fr; }
+      .mc.mc-sm .mc-img, .mc.mc-sm .mc-ph { min-height: 180px; border-right: none; border-bottom: 1px solid var(--ln); }
       .cc { grid-template-columns: auto 1fr; }
       .cprice { grid-column: 2; }
       .slv { gap: .65rem; padding: .85rem .75rem; }
@@ -259,6 +320,8 @@
 </head>
 <body>
 
+<a class="skip" href="#menu">Bỏ qua đến menu</a>
+
 <!-- ══ HEADER ══ -->
 <header class="hdr" id="top">
   <a class="brand" href="#top">
@@ -276,6 +339,8 @@
   </nav>
   <a href="#contact" class="btn btn-red">Đặt Món Ngay →</a>
 </header>
+
+<main id="main">
 
 <!-- ══ HERO ══ -->
 <section class="hero">
@@ -341,14 +406,14 @@
 <!-- ══ MENU ══ -->
 <section id="menu" class="sec menu-sec">
   <div class="inner">
-    <div class="sh">
+    <div class="sh reveal">
       <div class="eyebrow">Menu Nổi Bật</div>
       <h2 class="stitle">Gia Tộc Mì Cay Và<br>Những Món <span class="red">Cứu Drama</span></h2>
       <p class="sdesc">Chọn cấp cay khi order. Cậu Chủ khuyên khách mới bắt đầu ở Lv.1 hoặc Lv.2.</p>
     </div>
 
     <!-- Featured dish -->
-    <div class="mfeat">
+    <div class="mfeat reveal" data-delay="1">
       <img class="mfeat-img" src="assets/micay.png" alt="Mì cay đặc biệt nồi đất">
       <div class="mfeat-body">
         <div class="tag">Món Chủ Lực</div>
@@ -365,9 +430,9 @@
       </div>
     </div>
 
-    <!-- 3-card grid -->
+    <!-- Asymmetric menu grid -->
     <div class="mgrid">
-      <article class="mc">
+      <article class="mc mc-lg reveal" tabindex="0">
         <img class="mc-img" src="assets/garan.png" alt="Gà rán sốt Hàn giòn tan">
         <div class="mc-body">
           <div class="tag">Drama Gà Rán</div>
@@ -376,27 +441,27 @@
           <div class="mc-price">39k – 69k</div>
         </div>
       </article>
-      <article class="mc">
+      <article class="mc mc-sm reveal" data-delay="1" tabindex="0">
         <div class="mc-ph">
-          <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><rect x="1" y="1" width="42" height="42" rx="8" stroke="rgba(245,240,232,.35)" stroke-width="1.5"/><circle cx="22" cy="14" r="5" stroke="rgba(245,240,232,.35)" stroke-width="1.5"/><path d="M10 34c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="rgba(245,240,232,.25)" stroke-width="1.5" stroke-linecap="round"/></svg>
-          <span class="mc-ph-t">ảnh ăn vặt Hàn<br>tokbokki · chả cá · khoai tây phô mai</span>
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true"><rect x="1" y="1" width="42" height="42" rx="8" stroke="rgba(245,240,232,.35)" stroke-width="1.5"/><circle cx="22" cy="14" r="5" stroke="rgba(245,240,232,.35)" stroke-width="1.5"/><path d="M10 34c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="rgba(245,240,232,.25)" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span class="mc-ph-t">tokbokki · chả cá<br>khoai tây phô mai</span>
         </div>
         <div class="mc-body">
           <div class="tag">Side Plot</div>
           <h3 class="mc-title">Ăn Vặt Hàn</h3>
-          <p class="mc-desc">Tokbokki, chả cá Hàn, khoai tây phô mai. Chia nhau ăn kèm hoặc gọi thêm sau tô mì chính.</p>
+          <p class="mc-desc">Tokbokki, chả cá Hàn, khoai tây phô mai. Chia nhau ăn kèm sau tô mì chính.</p>
           <div class="mc-price">35k – 45k</div>
         </div>
       </article>
-      <article class="mc">
+      <article class="mc mc-sm reveal" data-delay="2" tabindex="0">
         <div class="mc-ph">
-          <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><rect x="1" y="1" width="42" height="42" rx="8" stroke="rgba(245,240,232,.35)" stroke-width="1.5"/><rect x="16" y="8" width="12" height="28" rx="5" stroke="rgba(245,240,232,.3)" stroke-width="1.5"/><path d="M19 14h6M19 20h6" stroke="rgba(245,240,232,.3)" stroke-width="1.5" stroke-linecap="round"/></svg>
-          <span class="mc-ph-t">ảnh đồ uống<br>trà tắc · trà đào · nước ngọt</span>
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true"><rect x="1" y="1" width="42" height="42" rx="8" stroke="rgba(245,240,232,.35)" stroke-width="1.5"/><rect x="16" y="8" width="12" height="28" rx="5" stroke="rgba(245,240,232,.3)" stroke-width="1.5"/><path d="M19 14h6M19 20h6" stroke="rgba(245,240,232,.3)" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span class="mc-ph-t">trà tắc · trà đào<br>nước ngọt</span>
         </div>
         <div class="mc-body">
           <div class="tag">Nước Giải Cứu</div>
           <h3 class="mc-title">Đồ Uống</h3>
-          <p class="mc-desc">Trà tắc, trà đào, nước ngọt, nước lọc. Ưu tiên trà để cân vị cay và refresh sau mỗi tập drama.</p>
+          <p class="mc-desc">Trà tắc, trà đào, nước ngọt. Cân vị cay, refresh sau mỗi tập drama.</p>
           <div class="mc-price">10k – 18k</div>
         </div>
       </article>
@@ -419,7 +484,7 @@
           <p class="sdesc">Khách vẫn chọn cấp cay riêng cho từng tô. Combo tiết kiệm hơn gọi lẻ.</p>
         </div>
         <div class="clist">
-          <article class="cc">
+          <article class="cc reveal" data-delay="1" tabindex="0">
             <div class="cnum">1<br>người</div>
             <div>
               <div class="cname">Combo Tập 1</div>
@@ -427,7 +492,7 @@
             </div>
             <div class="cprice">Từ 62k</div>
           </article>
-          <article class="cc">
+          <article class="cc reveal" data-delay="2" tabindex="0">
             <div class="cnum">2<br>người</div>
             <div>
               <div class="cname">Combo Plot Twist</div>
@@ -435,7 +500,7 @@
             </div>
             <div class="cprice">Từ 165k</div>
           </article>
-          <article class="cc">
+          <article class="cc reveal" data-delay="3" tabindex="0">
             <div class="cnum">4<br>người</div>
             <div>
               <div class="cname">Combo Gia Tộc</div>
@@ -452,14 +517,14 @@
 <!-- ══ SPICE LEVELS ══ -->
 <section id="spice" class="sec spice-sec">
   <div class="inner">
-    <div class="sh">
+    <div class="sh reveal">
       <div class="eyebrow">Cấp Độ Cay</div>
       <h2 class="stitle">Chọn Đúng Tập<br><span class="red">Drama</span> Của Bạn</h2>
     </div>
     <div class="spice-layout">
       <div class="slvs" id="spiceLevels">
 
-        <div class="slv on" data-lv="0">
+        <div class="slv on" data-lv="0" role="button" tabindex="0" aria-pressed="true">
           <div class="slv-badge">Lv.0</div>
           <div class="slv-body">
             <div class="slv-name">Người Bình Tĩnh</div>
@@ -471,7 +536,7 @@
           <div class="slv-art"><img src="assets/spice-lv0-calm.jpg" alt="Cậu Chủ Cay bình tĩnh với Lv.0"></div>
         </div>
 
-        <div class="slv" data-lv="1">
+        <div class="slv" data-lv="1" role="button" tabindex="0" aria-pressed="false">
           <div class="slv-badge">Lv.1</div>
           <div class="slv-body">
             <div class="slv-name">Mới Vào Tập 1</div>
@@ -483,7 +548,7 @@
           <div class="slv-art"><img src="assets/spice-lv1-blush.jpg" alt="Cậu Chủ Cay hơi đỏ mặt với Lv.1"></div>
         </div>
 
-        <div class="slv" data-lv="2">
+        <div class="slv" data-lv="2" role="button" tabindex="0" aria-pressed="false">
           <div class="slv-badge">Lv.2</div>
           <div class="slv-body">
             <div class="slv-name">Bắt Đầu Drama</div>
@@ -495,7 +560,7 @@
           <div class="slv-art"><img src="assets/spice-lv2-sweat.jpg" alt="Cậu Chủ Cay bắt đầu đổ mồ hôi với Lv.2"></div>
         </div>
 
-        <div class="slv" data-lv="3">
+        <div class="slv" data-lv="3" role="button" tabindex="0" aria-pressed="false">
           <div class="slv-badge">Lv.3</div>
           <div class="slv-body">
             <div class="slv-name">Gia Tộc Phản Đối</div>
@@ -507,7 +572,7 @@
           <div class="slv-art"><img src="assets/spice-lv3-tears.jpg" alt="Cậu Chủ Cay cay chảy nước mắt với Lv.3"></div>
         </div>
 
-        <div class="slv" data-lv="4">
+        <div class="slv" data-lv="4" role="button" tabindex="0" aria-pressed="false">
           <div class="slv-badge">Lv.4</div>
           <div class="slv-body">
             <div class="slv-name">Mất Quyền Thừa Kế</div>
@@ -579,13 +644,19 @@
           <a href="https://www.google.com/maps/search/?api=1&query=Sky+9+Khang+An+Phu+Huu+TPHCM" target="_blank" rel="noreferrer" class="btn btn-red">📍 Chỉ Đường</a>
         </div>
       </div>
-      <div class="map-ph">
-        <svg width="52" height="52" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="21" r="9" stroke="rgba(245,240,232,.4)" stroke-width="2"/><circle cx="26" cy="21" r="3" fill="rgba(212,41,26,.7)"/><path d="M26 30 L26 44" stroke="rgba(245,240,232,.3)" stroke-width="2"/><path d="M18 44 L34 44" stroke="rgba(245,240,232,.25)" stroke-width="2"/></svg>
-        <span>Bản đồ Google Maps<br>Khu Khang An · Sky 9<br>Phú Hữu, TP.HCM</span>
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps?q=Sky+9+Khang+An+Phu+Huu+TPHCM&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Bản đồ Mì Cay Chaebol — Khu Khang An, Phú Hữu, TP.HCM"
+          allowfullscreen></iframe>
       </div>
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- ══ FOOTER ══ -->
 <footer class="footer">
@@ -609,14 +680,20 @@
       <h4>Liên Hệ</h4>
       <div class="ft-links">
         <a href="#contact">📍 Khu Khang An, Phú Hữu</a>
-        <a href="#">Instagram @micaychaebol</a>
-        <a href="#">Facebook Mì Cay Chaebol</a>
+        <a href="https://instagram.com/micaychaebol" target="_blank" rel="noopener noreferrer">Instagram @micaychaebol</a>
+        <a href="https://facebook.com/micaychaebol" target="_blank" rel="noopener noreferrer">Facebook Mì Cay Chaebol</a>
       </div>
     </div>
   </div>
   <div class="ft-bot">
     <span>© <span id="yr"></span> Mì Cay Chaebol · micaychaebol.com</span>
-    <span>Made with 🔥 in Phú Hữu</span>
+    <span class="ft-legal">
+      <a href="#top">Về đầu trang</a>
+      <span class="ft-sep" aria-hidden="true">·</span>
+      <a href="mailto:hello@micaychaebol.com">Liên hệ</a>
+      <span class="ft-sep" aria-hidden="true">·</span>
+      <span>Made with 🔥 in Phú Hữu</span>
+    </span>
   </div>
 </footer>
 
@@ -671,12 +748,41 @@
   ['assets/spice-lv0-calm.jpg', 'assets/spice-lv1-blush.jpg', 'assets/spice-lv2-sweat.jpg', 'assets/spice-lv3-tears.jpg', 'assets/spice-lv4-fire.jpg']
     .forEach(src => { const pre = new Image(); pre.src = src; });
 
+  function selectSpice(el) {
+    document.querySelectorAll('.slv').forEach(i => { i.classList.remove('on'); i.setAttribute('aria-pressed', 'false'); });
+    el.classList.add('on');
+    el.setAttribute('aria-pressed', 'true');
+  }
   document.querySelectorAll('.slv').forEach(el => {
-    el.addEventListener('click', () => {
-      document.querySelectorAll('.slv').forEach(i => i.classList.remove('on'));
-      el.classList.add('on');
+    el.addEventListener('click', () => selectSpice(el));
+    el.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectSpice(el); }
     });
   });
+
+  // Scroll-reveal entry — IntersectionObserver, runs once per element
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Active nav link tracking via section visibility
+  const navLinks = document.querySelectorAll('.nav a[href^="#"]');
+  const navMap = new Map();
+  navLinks.forEach(a => { const id = a.getAttribute('href').slice(1); if (id) navMap.set(id, a); });
+  const navIO = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      const link = navMap.get(en.target.id);
+      if (!link) return;
+      if (en.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('is-active'));
+        link.classList.add('is-active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  document.querySelectorAll('section[id]').forEach(sec => navIO.observe(sec));
 
   // Tweaks protocol — register listener FIRST, then announce
   const tweaksPanel = document.getElementById('tweaks');
