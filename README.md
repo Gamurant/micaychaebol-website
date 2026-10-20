@@ -33,4 +33,6 @@ Giờ nằm ở 3 chỗ: `app.js` (`OPEN_MIN`, `CLOSE_MIN`), `index.html` (dòng
 ## Ảnh
 
 Ảnh mặt tiền, không gian và gà rán lấy từ ảnh quán đăng trên Google Maps (mục "Của chủ sở hữu").
-Ảnh mì cay (`micay-*.webp`, trong chữ O ở đầu trang và nhóm Mì cay) vẫn là ảnh dựng; nên thay bằng ảnh chụp thật khi có.
+Hai ảnh mì cay là ảnh khách đăng trên Google Maps, đã được khách đồng ý cho dùng:
+- `mi-cay-o.webp` (trong chữ O ở đầu trang): Mỹ Anh
+- `mi-cay-720.webp` (nhóm Mì cay): Ja Yeon Nguyễn

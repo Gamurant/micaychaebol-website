@@ -32,8 +32,8 @@ window.CHAEBOL_MENU = {
   groups: [
     {
       id: "mi-cay", name: "Mì cay", ko: "라면",
-      photo: "assets/img/micay-720.webp",
-      photoAlt: "Mì cay Chaebol trong nồi đất đen với tôm, xúc xích, cá viên, nấm kim châm",
+      photo: "assets/img/mi-cay-720.webp",
+      photoAlt: "Nồi mì cay Chaebol với tôm, kim chi, bông cải và cá viên trên bàn gỗ ở quán",
       sections: [
         { items: [
           { name: "Mì Kim chi Xúc xích Cá viên", price: 39 },
