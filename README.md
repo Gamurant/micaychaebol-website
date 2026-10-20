@@ -32,8 +32,8 @@ Giờ nằm ở 3 chỗ: `app.js` (`OPEN_MIN`, `CLOSE_MIN`), `index.html` (dòng
 
 ## Logo
 
-`assets/img/logo-badge.svg` (huy hiệu) và `assets/img/logo-o.svg` (chữ O tô mì bốc khói trong CHAEBOL) được vẽ lại từ biển hiệu thật của quán.
-Nếu có file logo gốc từ đơn vị thiết kế, thay 2 file này (giữ nguyên tên) là toàn bộ web đổi theo.
+`assets/logo-chaebol-goc.png` là logo gốc (1079×1079) lấy từ ảnh đại diện TikTok của quán.
+Web dùng bản tròn đã tối ưu: `assets/img/logo-160.webp`, `logo-320.webp`, `logo-640.webp` và các icon `icon-*.png`.
 
 ## Ảnh
 

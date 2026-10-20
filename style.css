@@ -53,16 +53,6 @@ address { font-style: normal; }
 .skip:focus { top: 12px; }
 .ko { font-family: var(--font-ko); font-weight: 400; letter-spacing: 0; }
 
-/* ---------- Chữ CHAEBOL (logo) ---------- */
-.wm {
-  display: inline-flex; align-items: baseline;
-  font-weight: 900; font-stretch: 118%; line-height: 1; letter-spacing: -0.01em;
-  color: var(--red-hi); white-space: nowrap;
-}
-.wm-o { display: inline-block; height: 0.9em; width: auto; margin: 0 -0.01em; align-self: baseline; transform: translateY(0.02em); }
-.wm-sm { font-size: 22px; }
-.wm-md { font-size: 30px; }
-
 /* ---------- Nút ---------- */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -94,7 +84,8 @@ address { font-style: normal; }
 .top.is-scrolled { box-shadow: 0 6px 20px rgba(23, 17, 15, 0.08); }
 .top-in { display: flex; align-items: center; gap: 28px; height: var(--top-h); }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; margin-right: auto; }
-.brand-badge { width: 34px; height: 44px; }
+.brand-logo { width: 46px; height: 46px; border-radius: 50%; }
+.brand-name { font-weight: 900; font-size: 18px; letter-spacing: -0.01em; color: var(--ink); }
 .nav { display: flex; gap: 6px; }
 .nav a {
   position: relative; padding: 8px 12px; border-radius: 999px;
@@ -116,16 +107,11 @@ address { font-style: normal; }
   display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px;
   padding-top: 56px; padding-bottom: 64px;
 }
-.lockup { display: flex; align-items: center; gap: 20px; margin-bottom: 26px; font-size: inherit; }
-.lockup-badge { width: 92px; height: auto; flex: none; filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.3)); }
-.lockup-text { display: flex; flex-direction: column; }
-.wm-lg {
-  font-size: clamp(40px, 5.6vw, 76px);
-  text-shadow: 0 0.035em 0 var(--cream), 0 0.07em 0 rgba(0, 0, 0, 0.22);
-}
-.wm-lg .wm-o { filter: drop-shadow(0 0.035em 0 var(--cream)) drop-shadow(0 0.04em 0 rgba(0, 0, 0, 0.22)); }
-.lockup-bar { display: block; height: 5px; margin: 14px 0 10px; background: var(--red); border-radius: 3px; }
-.lockup-sub { font-weight: 700; font-stretch: 110%; font-size: clamp(16px, 1.7vw, 22px); line-height: 1.2; color: #fff; }
+.lockup { display: flex; align-items: center; gap: 24px; margin-bottom: 26px; }
+.lockup-logo { width: 150px; height: 150px; flex: none; border-radius: 50%; box-shadow: 0 0 0 5px var(--cream), 0 14px 30px rgba(0, 0, 0, 0.35); }
+.lockup h1 { display: flex; flex-direction: column; }
+.h1-name { font-size: clamp(38px, 4.6vw, 60px); font-weight: 900; line-height: 1.02; letter-spacing: -0.02em; color: #fff; text-shadow: 0 3px 0 rgba(0, 0, 0, 0.18); }
+.h1-sub { margin-top: 10px; font-size: clamp(16px, 1.7vw, 22px); font-weight: 700; color: #FFD9B8; }
 .hero-lead { font-size: 18px; max-width: 46ch; color: var(--cream); }
 .status {
   display: inline-flex; align-items: center; gap: 10px; margin-top: 18px;
@@ -306,7 +292,8 @@ address { font-style: normal; }
 .foot::before { content: ""; display: block; height: 10px; background: var(--wood) var(--wood-slats); margin-bottom: 56px; }
 .foot-in { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
 .foot-lockup { display: flex; align-items: center; gap: 14px; }
-.foot-lockup img:first-child { width: 48px; height: auto; }
+.foot-lockup img { width: 64px; height: 64px; border-radius: 50%; box-shadow: 0 0 0 3px rgba(255, 246, 230, 0.15); }
+.foot-name { font-weight: 900; font-size: 22px; }
 .foot-brand p { margin-top: 14px; color: #CDBFAE; font-size: 15px; }
 .foot-col h2 { font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: #FFC9A8; margin-bottom: 12px; }
 .foot-col p { color: #E9DCCB; font-size: 15px; margin-bottom: 8px; }
@@ -343,8 +330,7 @@ address { font-style: normal; }
 @media (max-width: 1023px) {
   .combo-grid { grid-template-columns: repeat(2, 1fr); }
   .hero-in { gap: 24px; }
-  .wm-lg { font-size: clamp(40px, 6.4vw, 60px); }
-  .lockup-badge { width: 76px; }
+  .lockup-logo { width: 120px; height: 120px; }
 }
 
 /* ---------- Điện thoại ---------- */
@@ -361,15 +347,16 @@ address { font-style: normal; }
   }
   .nav.is-open { visibility: visible; opacity: 1; transform: none; transition: opacity 220ms, transform 220ms var(--ease); }
   .nav a { padding: 12px 12px; font-size: 16px; border-radius: 12px; }
-  .wm-sm { font-size: 19px; }
-  .brand-badge { width: 30px; height: 39px; }
+  .brand-logo { width: 40px; height: 40px; }
+  .brand-name { font-size: 16px; }
+  .brand-name { white-space: nowrap; }
+  .top-cta { display: none; }
 
   .hero-in { grid-template-columns: 1fr; padding-top: 32px; padding-bottom: 40px; gap: 28px; }
-  .lockup { gap: 14px; margin-bottom: 20px; }
-  .lockup-badge { width: 64px; }
-  .wm-lg { font-size: clamp(34px, 10.4vw, 52px); }
-  .lockup-bar { height: 4px; margin: 10px 0 8px; }
-  .lockup-sub { font-size: 15px; }
+  .lockup { gap: 16px; margin-bottom: 20px; }
+  .lockup-logo { width: 96px; height: 96px; box-shadow: 0 0 0 4px var(--cream), 0 10px 20px rgba(0, 0, 0, 0.3); }
+  .h1-name { font-size: 32px; }
+  .h1-sub { margin-top: 6px; font-size: 15px; }
   .hero-lead { font-size: 16px; }
   .hero-actions .btn { flex: 1; padding: 0 16px; }
   .hero-art { max-width: 340px; }
