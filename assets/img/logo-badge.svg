@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 128" role="img" aria-label="Logo Mì Cay Chaebol">
+  <!-- Huy hiệu trên biển hiệu: nền đen viền đỏ, lửa, tô mì, đũa, chữ 재 -->
+  <rect x="3" y="3" width="94" height="122" rx="13" fill="#17110F" stroke="#D7261E" stroke-width="5"/>
+  <path d="M50 12c3 9 12 13 15 22 2-4 2-8 1-12 9 8 13 21 9 33l-4 7H29l-4-7c-4-12 0-25 9-33-1 4-1 8 1 12 3-9 12-13 15-22z" fill="#E8341F"/>
+  <path d="M50 30c2 6 8 9 9 16 2-2 2-5 2-7 5 6 6 14 3 21H36c-3-7-2-15 3-21 0 2 0 5 2 7 1-7 7-10 9-16z" fill="#F7792B"/>
+  <path d="M40 58 76 34M45 58 80 39" stroke="#FFF6E6" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M27 56c3-5 7-5 9 0 2-5 6-5 9 0 2-5 6-5 9 0 2-5 6-5 9 0 2-5 6-5 9 0" fill="none" stroke="#FFF6E6" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M21 60h58c0 15-12 26-29 26S21 75 21 60z" fill="#FFF6E6"/>
+  <path d="M28 67h44" stroke="#D7261E" stroke-width="2.4" stroke-linecap="round"/>
+  <rect x="40" y="85" width="20" height="4" rx="2" fill="#FFF6E6"/>
+  <rect x="27" y="96" width="46" height="21" rx="3" fill="none" stroke="#D7261E" stroke-width="2.6"/>
+  <!-- 재 vẽ bằng nét: ㅈ + ㅐ -->
+  <path d="M35 101h10M40 101c-1 6-3 9-6 12M40 104c1 4 3 7 6 9M52 100v15M57 99v17M52 107h5" fill="none" stroke="#E8341F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

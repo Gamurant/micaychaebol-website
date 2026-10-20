@@ -75,6 +75,8 @@ window.CHAEBOL_MENU = {
     },
     {
       id: "mon-han", name: "Món Hàn", ko: "한식",
+      photo: "assets/img/ban-an.webp",
+      photoAlt: "Bàn ăn ở quán với cơm bò, gà rán và nước ngọt trong khay vàng",
       sections: [
         { items: [
           { name: "Cơm đùi gà", ko: "닭다리 덮밥", price: 39, new: true },

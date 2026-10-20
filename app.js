@@ -1,4 +1,4 @@
-/* Mì Cay Chaebol: hiện thực đơn từ menu.js, trạng thái mở cửa */
+/* Mì Cay Chaebol: hiện combo và thực đơn từ menu.js, trạng thái mở cửa, menu điện thoại */
 (function () {
   "use strict";
 
@@ -15,77 +15,92 @@
     });
   }
   function k(n) { return n == null ? "" : n + "K"; }
+
   /* ---------- Combo ---------- */
   function renderCombos() {
     var host = $("[data-combos]");
     if (!host || !MENU) return;
-    var list = MENU.combos.slice();
-    var html = list.map(function (c) { return comboHTML(c, false); }).join("");
-    if (MENU.special) html += comboHTML(MENU.special, true);
-    host.innerHTML = html;
-  }
-  function comboHTML(c, special) {
-    return '<li class="combo' + (special ? " combo-special" : "") + '">' +
-      '<p class="combo-name"><span class="caps">' + esc(c.title) + '</span> <span class="tail">' + esc(c.tail) + "</span></p>" +
-      '<p class="combo-items"><b>' + esc(c.name) + "</b> · " + esc(c.items) + "</p>" +
-      '<span class="combo-price">' + k(c.price) + "</span>" +
-      "</li>";
+    host.innerHTML = MENU.combos.map(function (c, i) {
+      var items = c.items.split(" + ").map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("");
+      return '<li class="combo reveal" style="--d:' + i * 80 + 'ms">' +
+        '<span class="combo-no">' + esc(c.name.toUpperCase()) + "</span>" +
+        '<span class="combo-new">Mới</span>' +
+        '<h3 class="combo-title">' + esc(c.title) + " <span>" + esc(c.tail) + "</span></h3>" +
+        '<ul class="combo-items">' + items + "</ul>" +
+        '<p class="combo-price"><span>Giá combo</span><strong>' + k(c.price) + "</strong></p>" +
+        "</li>";
+    }).join("");
+    var sp = MENU.special, spHost = $("[data-special]");
+    if (sp && spHost) {
+      spHost.innerHTML = '<article class="special reveal">' +
+        '<div><span class="special-tag">' + esc(sp.name) + "</span>" +
+        "<h3>" + esc(sp.title) + " " + esc(sp.tail) + "</h3>" +
+        "<p>" + esc(sp.items) + "</p></div>" +
+        '<p class="special-price"><strong>' + k(sp.price) + "</strong><span>cho 2 người</span></p>" +
+        "</article>";
+    }
   }
 
-  /* ---------- Thực đơn ---------- */
+  /* ---------- Thực đơn: tab + bảng món ---------- */
   function renderMenu() {
     var host = $("[data-menu]"), tabs = $("[data-tabs]");
     if (!host || !MENU) return;
-    // Chia nhóm món vào 2 cột cho cân: thử mọi cách chia, giữ thứ tự trong từng cột.
-    // Trên điện thoại hai cột gộp lại và nhóm món trở về đúng thứ tự trong menu.js.
-    var gs = MENU.groups, w = gs.map(function (g) {
-      var n = (g.photo ? 6 : 0) + 2 + (g.extras ? 2 : 0);
-      g.sections.forEach(function (s) { n += s.items.length + (s.title ? 1 : 0); });
-      return n;
-    });
-    var best = 0, bestDiff = Infinity;
-    for (var mask = 0; mask < (1 << gs.length); mask++) {
-      if ((mask & 1) || !(mask & 2)) continue;          // nhóm 1 bên trái, nhóm 2 bên phải
-      var d = 0;
-      for (var j = 0; j < gs.length; j++) d += (mask >> j & 1) ? -w[j] : w[j];
-      if (Math.abs(d) < bestDiff) { bestDiff = Math.abs(d); best = mask; }
-    }
-    var cols = [[], []];
-    gs.forEach(function (g, i) { cols[best >> i & 1].push(groupHTML(g, i)); });
-    host.innerHTML = cols.map(function (c) { return '<div class="menu-col">' + c.join("") + "</div>"; }).join("");
-    tabs.innerHTML = MENU.groups.map(function (g) {
-      return '<a href="#' + g.id + '">' + esc(g.name) + ' <span class="ko" lang="ko">' + esc(g.ko || "") + "</span></a>";
+    tabs.innerHTML = MENU.groups.map(function (g, i) {
+      return '<button class="tab" type="button" role="tab" id="tab-' + g.id + '" aria-controls="' + g.id + '" aria-selected="' + (i === 0) + '" tabindex="' + (i === 0 ? 0 : -1) + '">' +
+        esc(g.name) + (g.ko ? ' <span class="ko" lang="ko">' + esc(g.ko) + "</span>" : "") + "</button>";
     }).join("");
+    host.innerHTML = MENU.groups.map(panelHTML).join("");
+    // Có JS thì chỉ hiện nhóm đang chọn; không có JS thì hiện tất cả
+    $$(".panel", host).forEach(function (p, i) { if (i > 0) p.hidden = true; });
   }
-  function groupHTML(g, i) {
-    var out = '<article class="group" id="' + esc(g.id) + '" style="order:' + i + '" aria-labelledby="' + esc(g.id) + '-h">';
-    out += '<header class="group-head"><h3 id="' + esc(g.id) + '-h">' + esc(g.name) + "</h3>" +
-      (g.ko ? '<span class="ko" lang="ko">' + esc(g.ko) + "</span>" : "") + "</header>";
-    if (g.photo) {
-      out += '<div class="group-photo"><img src="' + esc(g.photo) + '" width="720" height="540" loading="lazy" alt="' + esc(g.photoAlt || g.name) + '"></div>';
-    }
+  function panelHTML(g) {
+    var visual = g.photo
+      ? '<div class="panel-visual"><img src="' + esc(g.photo) + '" width="720" height="540" loading="lazy" alt="' + esc(g.photoAlt || g.name) + '">' +
+        '<span class="panel-label">' + esc(g.name) + (g.ko ? ' <span class="ko" lang="ko">' + esc(g.ko) + "</span>" : "") + "</span></div>"
+      : '<div class="panel-visual panel-visual-type" aria-hidden="true"><span class="ko" lang="ko">' + esc(g.ko || "") + "</span><span>" + esc(g.name) + "</span></div>";
+    var body = '<h3>' + esc(g.name) + (g.ko ? ' <span class="ko" lang="ko">' + esc(g.ko) + "</span>" : "") + "</h3>";
     g.sections.forEach(function (s) {
-      if (s.title) {
-        out += '<h4 class="sub">' + esc(s.title) + (s.new ? ' <span class="tag tag-new">Mới</span>' : "") + "</h4>";
-      }
-      out += '<ul class="items">' + s.items.map(function (it) {
+      if (s.title) body += '<h4 class="sub">' + esc(s.title) + (s.new ? ' <span class="tag tag-new">Mới</span>' : "") + "</h4>";
+      body += '<ul class="items">' + s.items.map(function (it) {
         var tags = (it.pick ? '<span class="tag tag-pick">Quán gợi ý</span>' : "") + (it.new ? '<span class="tag tag-new">Mới</span>' : "");
-        return '<li class="item' + (it.pick ? " is-pick" : "") + '">' +
-          '<p class="item-name"><span>' + esc(it.name) + "</span>" +
-          (it.ko ? '<span class="ko-name" lang="ko">' + esc(it.ko) + "</span>" : "") + tags +
-          (it.note ? '<span class="item-note">' + esc(it.note) + "</span>" : "") + "</p>" +
-          (it.price == null
-            ? '<span class="item-price ask">Hỏi quán</span>'
-            : '<span class="item-price">' + k(it.price) + "</span>") +
-          "</li>";
+        return '<li class="item"><span class="item-main"><span class="item-name">' + esc(it.name) + "</span>" +
+          (it.ko ? '<span class="item-ko" lang="ko">' + esc(it.ko) + "</span>" : "") + tags +
+          (it.note ? '<span class="item-note">' + esc(it.note) + "</span>" : "") + "</span>" +
+          '<span class="leader" aria-hidden="true"></span>' +
+          '<span class="item-price">' + (it.price == null ? "Hỏi quán" : k(it.price)) + "</span></li>";
       }).join("") + "</ul>";
     });
     if (g.extras) {
-      out += '<div class="extras"><h4>' + esc(g.extras.title) + "</h4><ul>" + g.extras.items.map(function (x) {
+      body += '<div class="extras"><h4>' + esc(g.extras.title) + "</h4><ul>" + g.extras.items.map(function (x) {
         return "<li>" + esc(x.name) + " <b>" + (x.price == null ? "hỏi quán" : k(x.price)) + "</b></li>";
       }).join("") + "</ul></div>";
     }
-    return out + "</article>";
+    return '<article class="panel" id="' + esc(g.id) + '" role="tabpanel" aria-labelledby="tab-' + esc(g.id) + '">' +
+      visual + '<div class="panel-body">' + body + "</div></article>";
+  }
+  function bindTabs() {
+    var tabs = $$(".tab");
+    function select(tab, focus) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute("aria-selected", on);
+        t.tabIndex = on ? 0 : -1;
+        var p = document.getElementById(t.getAttribute("aria-controls"));
+        if (p) { p.hidden = !on; if (on) { p.classList.remove("is-in"); void p.offsetWidth; p.classList.add("is-in"); } }
+      });
+      if (focus) tab.focus();
+      var bar = tab.parentNode;
+      if (bar.scrollWidth > bar.clientWidth) bar.scrollTo({ left: tab.offsetLeft - (bar.clientWidth - tab.offsetWidth) / 2, behavior: "smooth" });
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener("click", function () { select(t); });
+      t.addEventListener("keydown", function (e) {
+        var j = e.key === "ArrowRight" ? i + 1 : e.key === "ArrowLeft" ? i - 1 : null;
+        if (j === null) return;
+        e.preventDefault();
+        select(tabs[(j + tabs.length) % tabs.length], true);
+      });
+    });
   }
 
   /* ---------- Schema.org Menu sinh từ menu.js ---------- */
@@ -106,15 +121,14 @@
       });
       return { "@type": "MenuSection", name: g.name, hasMenuItem: items };
     }));
-    var data = {
+    var el = document.createElement("script");
+    el.type = "application/ld+json";
+    el.textContent = JSON.stringify({
       "@context": "https://schema.org", "@type": "Menu",
       "@id": "https://micaychaebol.com/#thuc-don",
       name: "Thực đơn Mì Cay Chaebol", inLanguage: "vi",
       hasMenuSection: sections
-    };
-    var el = document.createElement("script");
-    el.type = "application/ld+json";
-    el.textContent = JSON.stringify(data);
+    });
     document.head.appendChild(el);
   }
 
@@ -131,41 +145,49 @@
     }
   }
   function updateStatus() {
-    var el = $("[data-status]"), txt = $("[data-status-text]");
-    if (!el || !txt) return;
+    var el = $("[data-status]"), txt = $("[data-status-text]"), txt2 = $("[data-status-text-2]");
     var now = vnMinutes(), open = now >= OPEN_MIN && now < CLOSE_MIN, msg;
     if (open && CLOSE_MIN - now <= 30) msg = "Sắp đóng cửa · còn " + (CLOSE_MIN - now) + " phút";
     else if (open) msg = "Đang mở cửa · đến 21:30";
     else if (now < OPEN_MIN) msg = "Chưa mở cửa · mở lúc 10:00";
     else msg = "Đã đóng cửa · mở lại 10:00 mai";
-    el.setAttribute("data-open", open ? "true" : "false");
-    txt.textContent = msg;
+    if (el) el.setAttribute("data-open", open ? "true" : "false");
+    if (txt) txt.textContent = msg;
+    if (txt2) txt2.textContent = msg;
   }
 
-  /* ---------- Tab nhóm món đang xem ---------- */
-  function bindTabs() {
-    var links = $$("[data-tabs] a");
-    if (!("IntersectionObserver" in window) || !links.length) return;
-    var byId = {};
+  /* ---------- Thanh trên cùng: bóng khi cuộn, menu điện thoại, mục đang xem ---------- */
+  function bindHeader() {
+    var top = $("[data-top]"), burger = $("[data-burger]"), nav = $("#nav");
+    var onScroll = function () { top.classList.toggle("is-scrolled", window.scrollY > 8); };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    function close() { nav.classList.remove("is-open"); burger.setAttribute("aria-expanded", "false"); burger.setAttribute("aria-label", "Mở menu"); }
+    burger.addEventListener("click", function () {
+      var open = !nav.classList.contains("is-open");
+      nav.classList.toggle("is-open", open);
+      burger.setAttribute("aria-expanded", open);
+      burger.setAttribute("aria-label", open ? "Đóng menu" : "Mở menu");
+    });
+    $$("a", nav).forEach(function (a) { a.addEventListener("click", close); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+
+    if (!("IntersectionObserver" in window)) return;
+    var links = $$("a", nav), byId = {};
     links.forEach(function (a) { byId[a.getAttribute("href").slice(1)] = a; });
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
         if (!en.isIntersecting) return;
         links.forEach(function (a) { a.removeAttribute("aria-current"); });
-        var a = byId[en.target.id];
-        if (a) {
-          a.setAttribute("aria-current", "true");
-          var bar = a.parentNode;
-          bar.scrollTo({ left: a.offsetLeft - 16, behavior: "smooth" });
-        }
+        if (byId[en.target.id]) byId[en.target.id].setAttribute("aria-current", "true");
       });
-    }, { rootMargin: "-30% 0px -60% 0px" });
-    $$(".group").forEach(function (g) { io.observe(g); });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    Object.keys(byId).forEach(function (id) { var s = document.getElementById(id); if (s) io.observe(s); });
   }
 
   /* ---------- Hiện dần khi cuộn ---------- */
   function bindReveal() {
-    var els = $$(".reveal, .group, .combo");
+    var els = $$(".reveal");
     if (!("IntersectionObserver" in window)) { els.forEach(function (el) { el.classList.add("in"); }); return; }
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
@@ -177,8 +199,9 @@
 
   renderCombos();
   renderMenu();
-  injectMenuSchema();
   bindTabs();
+  injectMenuSchema();
+  bindHeader();
   bindReveal();
   updateStatus();
   setInterval(updateStatus, 60 * 1000);

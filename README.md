@@ -30,6 +30,11 @@ Sửa xong thì commit và push lên `main`, khoảng 1–2 phút sau web tự c
 
 Giờ nằm ở 3 chỗ: `app.js` (`OPEN_MIN`, `CLOSE_MIN`), `index.html` (dòng "Mở cửa 10:00 – 21:30", thẻ meta description và khối `openingHoursSpecification`).
 
+## Logo
+
+`assets/img/logo-badge.svg` (huy hiệu) và `assets/img/logo-o.svg` (chữ O tô mì bốc khói trong CHAEBOL) được vẽ lại từ biển hiệu thật của quán.
+Nếu có file logo gốc từ đơn vị thiết kế, thay 2 file này (giữ nguyên tên) là toàn bộ web đổi theo.
+
 ## Ảnh
 
 Ảnh mặt tiền, không gian và gà rán lấy từ ảnh quán đăng trên Google Maps (mục "Của chủ sở hữu").
