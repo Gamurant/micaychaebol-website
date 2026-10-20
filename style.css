@@ -261,15 +261,6 @@ h2 .ko { font-size: 0.42em; vertical-align: 0.9em; margin-left: 0.25em; text-tra
   background: rgba(23, 17, 15, 0.72); color: var(--cream-ink);
   font-size: var(--step-sub); font-weight: 800; line-height: 1.05; font-stretch: 62%; text-transform: uppercase;
 }
-.panel-todo {
-  display: flex; flex-direction: column; justify-content: space-between;
-  background-color: var(--wood);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='8'%3E%3Crect width='22' height='8' fill='%23B24A16'/%3E%3Crect x='22' width='22' height='8' fill='%23AB4714'/%3E%3Crect x='19' width='3' height='8' fill='%23983D10'/%3E%3Crect x='41' width='3' height='8' fill='%23983D10'/%3E%3C/svg%3E");
-  color: var(--cream-ink);
-}
-.todo-sign { padding: 28px 20px 0; }
-.todo-sign span { display: block; font-weight: 800; font-stretch: 62%; font-size: var(--step-head); line-height: 0.9; color: var(--red-bright); -webkit-text-stroke: 0.03em var(--cream-ink); paint-order: stroke fill; }
-.panel-todo figcaption { margin: 20px; padding: 10px 12px; background: var(--ink); font-size: var(--step-small); font-weight: 600; }
 .band-caption { margin-top: 18px; font-size: var(--step-body); }
 
 /* ---------- Tới quán: địa chỉ thành từng dòng lớn ---------- */
@@ -289,9 +280,12 @@ h2 .ko { font-size: 0.42em; vertical-align: 0.9em; margin-left: 0.25em; text-tra
 .row-go { background: var(--red) !important; color: var(--cream-ink); }
 .go { display: inline-grid; place-items: center; width: 0.9em; height: 0.9em; border-radius: 50%; background: var(--cream-ink); color: var(--red); align-self: center; transition: transform 240ms var(--ease-out); }
 .go svg { width: 50%; height: 50%; }
-.map-wrap { margin-top: clamp(40px, 5vw, 72px); }
-.map { display: block; width: 100%; height: clamp(360px, 52vh, 560px); border: 0; background: var(--cream-2); }
-.map-note { margin-top: 14px; font-size: var(--step-body); }
+.map-wrap { margin-top: clamp(40px, 5vw, 72px); display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); grid-template-rows: auto auto; gap: 14px clamp(16px, 2vw, 32px); align-items: stretch; }
+.facade { grid-row: 1 / 3; display: flex; flex-direction: column; gap: 14px; }
+.facade img { width: 100%; flex: 1; min-height: 0; object-fit: cover; aspect-ratio: 8 / 11; }
+.facade figcaption { font-size: var(--step-body); font-weight: 600; }
+.map { display: block; width: 100%; height: 100%; min-height: 360px; border: 0; background: var(--cream-2); }
+.map-note { font-size: var(--step-body); }
 .map-note a { font-weight: 700; text-underline-offset: 3px; }
 
 /* ---------- Chân trang ---------- */
@@ -426,9 +420,11 @@ h2 .ko { font-size: 0.42em; vertical-align: 0.9em; margin-left: 0.25em; text-tra
   .panel { flex: none !important; height: 50%; }
   .panel:nth-child(1), .panel:nth-child(4) { width: 64%; }
   .panel:nth-child(2), .panel:nth-child(3) { width: 36%; }
-  .panel-todo figcaption { margin: 10px; }
 
   .row { min-height: 76px; }
+  .map-wrap { grid-template-columns: 1fr; }
+  .facade { grid-row: auto; }
+  .map { height: 360px; }
   .menu-board { display: flex; flex-direction: column; align-items: stretch; gap: 88px; }
   .menu-col { display: contents; }
   .foot-word { font-size: 46vw; }

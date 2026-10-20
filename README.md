@@ -30,6 +30,7 @@ Sửa xong thì commit và push lên `main`, khoảng 1–2 phút sau web tự c
 
 Giờ nằm ở 3 chỗ: `app.js` (`OPEN_MIN`, `CLOSE_MIN`), `index.html` (dòng "Mở cửa 10:00 – 21:30", thẻ meta description và khối `openingHoursSpecification`).
 
-## Ảnh cần bổ sung
+## Ảnh
 
-Tìm `data-todo` trong `index.html`: khối đó đang giữ chỗ cho ảnh mặt tiền quán.
+Ảnh mặt tiền, không gian và gà rán lấy từ ảnh quán đăng trên Google Maps (mục "Của chủ sở hữu").
+Ảnh mì cay (`micay-*.webp`, trong chữ O ở đầu trang và nhóm Mì cay) vẫn là ảnh dựng; nên thay bằng ảnh chụp thật khi có.

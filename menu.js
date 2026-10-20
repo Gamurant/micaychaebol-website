@@ -26,7 +26,7 @@ window.CHAEBOL_MENU = {
 
   special: {
     name: "Special offer", title: "LẨU TOMYUM", tail: "Chaebol", price: 199,
-    items: "Lẩu cho 2 người, vị Tomyum chua cay thơm béo. Tôm, mực, bò Mỹ, chả cá, cá viên, xúc xích."
+    items: "Lẩu 2 người, vị Tomyum chua cay thơm béo, đầy đặn topping tôm, mực, bò Mỹ, chả cá, cá viên và xúc xích."
   },
 
   groups: [
@@ -41,8 +41,8 @@ window.CHAEBOL_MENU = {
           { name: "Mì Kim chi Bò Mỹ", price: 59 },
           { name: "Mì Kim chi Hải sản", price: 69, note: "Tôm, mực, bò Mỹ, chả cá, xúc xích" },
           { name: "Mì Kim chi Chaebol", price: 79, pick: true, note: "Tôm, mực, bò Mỹ, chả cá, cá viên, xúc xích" },
-          { name: "Mì Tomyum Chaebol", price: 79, new: true, note: "Topping như Mì Kim chi Chaebol" },
-          { name: "Mì Cà chua Chaebol", price: 79, new: true, note: "Topping như Mì Kim chi Chaebol" }
+          { name: "Mì Tomyum Chaebol", price: 79, new: true, note: "Tôm, mực, bò Mỹ, chả cá, cá viên, xúc xích" },
+          { name: "Mì Cà chua Chaebol", price: 79, new: true, note: "Tôm, mực, bò Mỹ, chả cá, cá viên, xúc xích" }
         ] }
       ],
       extras: {
@@ -53,14 +53,14 @@ window.CHAEBOL_MENU = {
           { name: "Cơm", price: 15 },
           { name: "Xúc xích / Cá viên", price: 15 },
           { name: "Kim chi", price: 15 },
-          { name: "Bông cải xanh", price: null }
+          { name: "Bông cải xanh / Nấm kim châm / Bắp cải tím", price: 15 }
         ]
       }
     },
     {
       id: "ga-ran", name: "Gà rán", ko: "치킨",
-      photo: "assets/img/garan-720.webp",
-      photoAlt: "Gà rán không xương sốt cay Hàn Quốc rắc mè và hành lá",
+      photo: "assets/img/ga-ran-720.webp",
+      photoAlt: "Gà rán không xương rắc mè trong khay vàng, chụp tại quán",
       sections: [
         { title: "Gà rán không xương", items: [
           { name: "Vị truyền thống", price: 49 },
@@ -98,7 +98,7 @@ window.CHAEBOL_MENU = {
       ]
     },
     {
-      id: "do-uong", name: "Đồ uống", ko: "음료",
+      id: "thuc-uong", name: "Thức uống", ko: "음료",
       sections: [
         { items: [
           { name: "Trà sữa truyền thống", price: 20 },
