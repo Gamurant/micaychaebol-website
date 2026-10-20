@@ -1,32 +1,35 @@
-# Mi Cay Chaebol Website
+# Mì Cay Chaebol — micaychaebol.com
 
-Website tĩnh dùng cho GitHub Pages của Mi Cay Chaebol.
+Website tĩnh của quán Mì Cay Chaebol, chạy bằng GitHub Pages từ nhánh `main` (thư mục gốc), domain trong file `CNAME`.
+
+## Sửa thực đơn và giá
+
+Chỉ cần sửa **`menu.js`**. Mỗi món là một dòng:
+
+```js
+{ name: "Mì Kim chi Chaebol", price: 79, pick: true, note: "Tôm, mực, bò Mỹ, chả cá, cá viên, xúc xích" },
+```
+
+- `price`: giá tính bằng nghìn đồng (`79` = 79.000đ). Để `null` nếu chưa có giá (web hiện "Hỏi quán").
+- `pick: true`: món quán khuyên dùng (nhãn "Quán gợi ý").
+- `new: true`: món mới (nhãn "Mới").
+- `note`, `ko`: mô tả nhỏ và tên tiếng Hàn, không bắt buộc.
+
+Sửa xong thì commit và push lên `main`, khoảng 1–2 phút sau web tự cập nhật. Menu cho Google (schema.org) cũng được tạo từ file này.
 
 ## Cấu trúc
 
-- `index.html`: nội dung website
-- `style.css`: giao diện responsive
-- `assets/`: logo, mascot và ảnh món ăn
-- `CNAME`: domain `micaychaebol.com`
+- `index.html`: nội dung trang, thông tin SEO (title, mô tả, Open Graph, schema.org Restaurant)
+- `style.css`: giao diện
+- `menu.js`: dữ liệu thực đơn
+- `app.js`: hiện thực đơn, trạng thái "Đang mở cửa" theo giờ Việt Nam (10:00–21:30)
+- `assets/img/`: ảnh đã tối ưu (WebP) dùng trên web, ảnh chia sẻ `og.jpg`, icon
+- `assets/`: ảnh gốc (logo, linh vật, ảnh món)
 
-## Nội dung hiện tại
+## Đổi giờ mở cửa
 
-- Hero brand Mi Cay Chaebol với ảnh combo.
-- Concept K-drama fast-casual.
-- Menu lõi: mì cay, gà rán, side, nước.
-- Cấp cay Lv.0 - Lv.4.
-- Combo Tập 1, Combo Plot Twist, Combo Gia Tộc.
-- Thông tin khu vực: khu Khang An, đối diện Sky 9, Phú Hữu.
+Giờ nằm ở 3 chỗ: `app.js` (`OPEN_MIN`, `CLOSE_MIN`), `index.html` (dòng "Mở cửa 10:00 – 21:30", thẻ meta description và khối `openingHoursSpecification`).
 
-## Chỗ cần cập nhật khi chốt vận hành
+## Ảnh cần bổ sung
 
-1. Giá chính thức sau khi test cost món.
-2. Ngày soft opening và grand opening.
-3. Link Facebook/TikTok thật.
-4. Số điện thoại/Zalo.
-5. Địa chỉ Google Maps chính xác khi đã tạo listing.
-6. Ảnh mặt tiền, không gian quán và menu board thật.
-
-## Deploy GitHub Pages
-
-Repo này có thể deploy trực tiếp từ branch chính bằng GitHub Pages vì chỉ dùng HTML/CSS/ảnh tĩnh.
+Tìm `data-todo` trong `index.html`: khối đó đang giữ chỗ cho ảnh mặt tiền quán.
